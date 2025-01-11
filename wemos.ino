@@ -68,15 +68,15 @@ void controlIrrigation(String predictionToday, String predictionTomorrow) {
   Serial.println(currentMinute);
 
   // Jadwal irigasi pada jam 08:15 dan 15:15
-    if ((currentHour == 8 && currentMinute == 15) || (currentHour == 8 && currentMinute == 20)) {
+    if ((currentHour == 8 && currentMinute == 15) || (currentHour == 15 && currentMinute == 15)) {
       if (predictionToday == "Clear") {
-          activatePump(6000);  // Pompa aktif 3 detik
+          activatePump(6000);  // Pompa aktif 6 detik
       } else if (predictionToday == "Partially cloudy") {
-          activatePump(6000);  // Pompa aktif 2 detik
+          activatePump(6000);  // Pompa aktif 6 detik
       } else if (predictionToday == "Rain, Partially cloudy") {
-          activatePump(4000);  // Pompa aktif 1 detik
+          activatePump(4000);  // Pompa aktif 4 detik
       } else if (predictionToday == "Rain, Overcast") {
-          activatePump(2000);;
+          activatePump(2000); // Pompa aktif 2 detik
       } else {
           Serial.println("Tidak perlu irigasi (Curah hujan mencukupi)");
       }
@@ -153,7 +153,7 @@ void loop() {
   timeClient.update();
 
   unsigned long currentTime = millis();
-  if (currentTime - lastDataSendTime > 60000) {  // Pengiriman data sensor setiap 50 detik
+  if (currentTime - lastDataSendTime > 60000) {  // Pengiriman data sensor setiap 60 detik
     lastDataSendTime = currentTime;
 
     float temperature = dht.readTemperature();
