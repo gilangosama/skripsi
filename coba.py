@@ -93,9 +93,9 @@ def should_send_prediction():
         if last_prediction_time != "8:15":
             last_prediction_time = "8:15"
             return True
-    elif current_time.hour == 8 and current_time.minute == 20:
-        if last_prediction_time != "8:20":
-            last_prediction_time = "8:20"
+    elif current_time.hour == 15 and current_time.minute == 15:
+        if last_prediction_time != "15:15":
+            last_prediction_time = "15:15"
             return True
 
     return False
